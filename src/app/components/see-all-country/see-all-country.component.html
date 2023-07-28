@@ -1,0 +1,30 @@
+
+<div class="container shadow-lg p-3 mb-5 bg-body-tertiary rounded border" *ngIf="CountryRating">
+    <table class="table table-striped shadow-lg p-3 mb-5 bg-body-tertiary rounded border">
+      <thead class="text-center">    
+        <tr>
+          <th class="col-2 border" scope="col" sortable="flag" >Flag</th>
+          <th class="col-2 border" scope="col" sortable="name" >Country</th>
+          <th class="col-2 border" scope="col" sortable="name" >Total rating</th>
+          <th class="col-2 border" scope="col" sortable="name" >Navigate to</th>
+        </tr>
+      </thead> 
+      <tbody>
+        <ng-container>
+          <tr  class="text-center border" *ngFor="let country of CountryRating">
+            <td><img [src] ="'https://flagsapi.com/' + getCountryCode(country.Country) + '/flat/64.png'"></td>
+            <td>{{ country.Country }}</td>
+            <td>{{ country.TotalRating }}</td>
+            <td class="text-center">
+              <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
+                <button type="button" class="btn btn-primary"(click)="navigateToCountry(country.Country)">{{country.Country}}</button>
+              </div>
+            </td>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
+  </div>
+  
+  
+    

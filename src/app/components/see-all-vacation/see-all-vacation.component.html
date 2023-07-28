@@ -1,0 +1,14 @@
+<div class="container"> 
+    <ngb-carousel *ngIf="allCountry">
+        <ng-template ngbSlide *ngFor="let country of allCountry">
+                <div class="picsum-img-wrapper" >
+                    <img [src]="country.data.postPic"/>
+                </div>
+                <div class="carousel-caption">
+                    <h2>{{country.data.FirstName}} {{country.data.LastName}}</h2>
+                    <h3>Visited from: {{country.data.StartDate}}  to: {{country.data.EndDate}}</h3>
+                    <p>{{country.data.Description}}</p>
+                </div>
+        </ng-template>
+    </ngb-carousel>
+</div>
