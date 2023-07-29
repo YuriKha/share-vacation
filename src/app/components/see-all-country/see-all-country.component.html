@@ -4,9 +4,13 @@
       <thead class="text-center">    
         <tr>
           <th class="col-2 border" scope="col" sortable="flag" >Flag</th>
-          <th class="col-2 border" scope="col" sortable="name" >Country</th>
-          <th class="col-2 border" scope="col" sortable="name" >Total rating</th>
-          <th class="col-2 border" scope="col" sortable="name" >Navigate to</th>
+          <th class="col-2 border" scope="col" sortable="country" >Country</th>
+
+          <th class="col-2 border" scope="col" sortable="numpost">Number of posts</th>
+          <th class="col-2 border" scope="col" sortable="avg">Average rating</th>
+
+          <th class="col-2 border" scope="col" sortable="total" >Total rating</th>
+          <th class="col-2 border" scope="col" sortable="goto" >Navigate to</th>
         </tr>
       </thead> 
       <tbody>
@@ -14,6 +18,10 @@
           <tr  class="text-center border" *ngFor="let country of CountryRating">
             <td><img [src] ="'https://flagsapi.com/' + getCountryCode(country.Country) + '/flat/64.png'"></td>
             <td>{{ country.Country }}</td>
+
+            <td>{{ getNumberOfPosts(country.Country) }}</td>
+            <td>{{ calculateAverageRating(country.Country) }}</td>
+
             <td>{{ country.TotalRating }}</td>
             <td class="text-center">
               <div class="btn-group-vertical" role="group" aria-label="Vertical button group">

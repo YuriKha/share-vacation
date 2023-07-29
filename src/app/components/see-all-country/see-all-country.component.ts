@@ -4,6 +4,7 @@ import { AddVacationService } from 'src/app/services/add-vacation.service';
 import { CountryRating } from 'src/app/models/country-rating';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { Vacation } from 'src/app/models/vacation';
 
 @Component({
   selector: 'app-see-all-country',
@@ -13,6 +14,7 @@ import { map } from 'rxjs/operators';
 export class SeeAllCountryComponent implements OnInit {
   allCountry$: Observable<any>;
   CountryRating$: Observable<CountryRating[]>;
+  countryData: any = [];
 
   constructor(private addVacationService: AddVacationService, private router: Router) { }
 
@@ -22,6 +24,10 @@ export class SeeAllCountryComponent implements OnInit {
     this.CountryRating$ = this.allCountry$.pipe(
       map(data => this.calculateTotalRating(data))
     );
+
+    this.allCountry$.subscribe(data => {
+      this.countryData = data;
+    });
   }
 
   calculateTotalRating(data: any[]): CountryRating[] {
@@ -37,6 +43,29 @@ export class SeeAllCountryComponent implements OnInit {
     });
 
     return countryRatings;
+  }
+
+  
+  getNumberOfPosts(country:string): number {
+    let num = 0;
+    for(let i=0; i < this.countryData.length; i++){
+        if(country === this.countryData[i].data.Country){
+          num++;
+        }
+    }
+    return num;
+  }
+
+  calculateAverageRating(country:string): number {
+    let avg = 0;
+    let total = 0;
+    for(let i=0; i < this.countryData.length; i++){
+      if(country === this.countryData[i].data.Country){
+        total++;
+        avg += this.countryData[i].data.Rating;
+      }
+    }
+    return avg/total;
   }
 
   getCountryCode(country: string): string {
