@@ -1,5 +1,5 @@
 
-<div class="container shadow-lg p-3 mb-5 bg-body-tertiary rounded border" *ngIf="CountryRating">
+<div class="container shadow-lg p-3 mb-5 bg-body-tertiary rounded border" *ngIf="(CountryRating$ | async) as CountryRating">
     <table class="table table-striped shadow-lg p-3 mb-5 bg-body-tertiary rounded border">
       <thead class="text-center">    
         <tr>

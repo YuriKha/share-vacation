@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { AddVacationService } from 'src/app/services/add-vacation.service';
 
 
@@ -10,18 +11,15 @@ import { AddVacationService } from 'src/app/services/add-vacation.service';
 export class SeeAllVacationComponent implements OnInit {
 
   // לפה אני מביא את כל המידע
-  allCountry:any;
+  allCountry$: Observable<any>;
 
   constructor(private addVacationService:AddVacationService) { }
 
   ngOnInit(): void {
-    this.getallinfo();
+    this.allCountry$ = this.addVacationService.getVacation();
+    
   }
 
-  getallinfo() {
-    this.addVacationService.getVacation().subscribe(data =>{
-      this.allCountry = data;
-    });
-  }
+  
 
 }

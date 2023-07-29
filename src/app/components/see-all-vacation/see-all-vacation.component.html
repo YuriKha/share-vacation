@@ -1,5 +1,5 @@
 <div class="container"> 
-    <ngb-carousel *ngIf="allCountry">
+    <ngb-carousel *ngIf="(allCountry$ | async) as allCountry">
         <ng-template ngbSlide *ngFor="let country of allCountry">
                 <div class="picsum-img-wrapper" >
                     <img [src]="country.data.postPic"/>
