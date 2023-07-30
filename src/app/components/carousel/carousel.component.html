@@ -1,29 +1,34 @@
-<ngb-carousel *ngIf="images">
-	<ng-template ngbSlide>
-		<div class="picsum-img-wrapper">
-			<img [src]="images[0]" alt="Random first slide" />
-		</div>
-		<div class="carousel-caption">
-			<h3>This could be you next vacation</h3>
-			<p>Take a look at what people uploading</p>
-		</div>
-	</ng-template>
-	<ng-template ngbSlide>
-		<div class="picsum-img-wrapper">
-			<img [src]="images[1]" alt="Random second slide" />
-		</div>
-		<div class="carousel-caption">
-			<h3>This could be you next vacation</h3>
-			<p>Take a look at what people uploading</p>
-		</div>
-	</ng-template>
-	<ng-template ngbSlide>
-		<div class="picsum-img-wrapper">
-			<img [src]="images[2]" alt="Random third slide" />
-		</div>
-		<div class="carousel-caption">
-			<h3>This could be you next vacation</h3>
-			<p>Take a look at what people uploading.</p>
-		</div>
-	</ng-template>
-</ngb-carousel>
+<div class="container-fluid">
+	<ngb-carousel *ngIf="images">
+		<ng-template ngbSlide>
+			<div class="image-containe">
+			<!-- <div class="picsum-img-wrapper"> -->
+				<img [src]="images[0]" alt="Random first slide" class="img-fluid"/>
+			</div>
+			<div class="carousel-caption">
+				<h3>This could be you next vacation</h3>
+				<p>Take a look at what people uploading</p>
+			</div>
+		</ng-template>
+		<ng-template ngbSlide>
+			<div class="image-containe">
+			<!-- <div class="picsum-img-wrapper"> -->
+				<img [src]="images[1]" alt="Random second slide" class="img-fluid"/>
+			</div>
+			<div class="carousel-caption">
+				<h3>This could be you next vacation</h3>
+				<p>Take a look at what people uploading</p>
+			</div>
+		</ng-template>
+		<ng-template ngbSlide>
+			<div class="image-containe">
+			<!-- <div class="picsum-img-wrapper"> -->
+				<img [src]="images[2]" alt="Random third slide" class="img-fluid"/>
+			</div>
+			<div class="carousel-caption">
+				<h3>This could be you next vacation</h3>
+				<p>Take a look at what people uploading.</p>
+			</div>
+		</ng-template>
+	</ngb-carousel>
+</div>

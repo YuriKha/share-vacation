@@ -13,10 +13,14 @@ export class AddVacationComponent implements OnInit {
 
   // addForm מחזיק את כל הפרטים 
   addForm:FormGroup;
+  // מחזיק את התמונה הזמנית שלנו 
   tempPic:any='../assets/image_placeholder.png';
+  // פה תהיה התמונה אותה בחר המשתמש
   uploadPicture:any;
+  // טיפוס שמכיל את כל המדינות הקיימות בעולם
   countriesList=countriesList;
-  currentRate:any;
+  // שדה זה יכיל את הדירוג שנתן המשתמש לחופשה שהוא מעלה
+  currentRate:any=0; // כברירת מחדל מתחיל מאפס
 
   constructor(private FormBuilder:FormBuilder, private addVacationService:AddVacationService) {
     // יצירה התחלתית אובייקט מסוג זה שהשדות שלו כרגע רקים
@@ -34,9 +38,8 @@ export class AddVacationComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  // פונקציה שמופעלת כשהמשתמש מוכן לשלוח את הטופס
   onSubmit(){
-    // נדפיב על מנת לראות את הפרטים של הטופס
-    console.log(this.addForm.value);
     // ניצור משתנה מסוג חופשה ונמלא אותו בפרטים מהטופס
     let newVacation:Vacation={
       FirstName:this.addForm.value.firstname,
@@ -49,13 +52,16 @@ export class AddVacationComponent implements OnInit {
       postPic:'',
       PostDate:new Date()
     }
-    // נזמן את הפונקציה שיודעת לשמור
+    // נזמן את הפונקציה שיודעת לשמור בעזרת ה service
     this.addVacationService.uploadImage(this.uploadPicture,newVacation);
     // נאפס את הטופס
     this.addForm.reset();
+    // נחזיר את התמונה שלנו
     this.tempPic='../assets/image_placeholder.png';
   }
 
+  // פונקציה שמופעלת בזמן שאתה מנסה לעלות תמונה
+  // הפונקציה מראה לך את התתמונה אותה בחרתה לעלות
   showUploadPic($event){
     const reader = new FileReader();
     reader.onload=(e)=>{

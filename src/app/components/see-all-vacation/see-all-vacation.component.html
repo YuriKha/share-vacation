@@ -2,7 +2,7 @@
     <ngb-carousel *ngIf="(allCountry$ | async) as allCountry">
         <ng-template ngbSlide *ngFor="let country of allCountry">
                 <div class="picsum-img-wrapper" >
-                    <img [src]="country.data.postPic"/>
+                    <img [src]="country.data.postPic" class="img-fluid"/>
                 </div>
                 <div class="carousel-caption">
                     <h2>{{country.data.FirstName}} {{country.data.LastName}}</h2>
